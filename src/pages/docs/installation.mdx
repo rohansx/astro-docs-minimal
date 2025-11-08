@@ -1,0 +1,132 @@
+---
+layout: ../../layouts/DocsLayout.astro
+title: Installation
+description: Get started with Astro Docs Minimal in minutes
+---
+
+export const prerender = true;
+
+# Installation
+
+Get your documentation site up and running in just a few minutes.
+
+## Prerequisites
+
+Before you begin, make sure you have:
+
+- **Node.js** 18 or higher
+- **npm**, **pnpm**, or **yarn** package manager
+- Basic familiarity with Astro (optional but helpful)
+
+## Quick Start
+
+### Option 1: Clone the Repository
+
+The fastest way to get started:
+
+\`\`\`bash
+# Clone the repository
+git clone https://github.com/yourusername/astro-docs-minimal.git my-docs
+
+# Navigate to the directory
+cd my-docs
+
+# Install dependencies
+npm install
+
+# Start the dev server
+npm run dev
+\`\`\`
+
+Your documentation site will be available at `http://localhost:4321`
+
+### Option 2: Manual Setup
+
+1. **Create a new Astro project**:
+
+\`\`\`bash
+npm create astro@latest my-docs
+cd my-docs
+\`\`\`
+
+2. **Install required dependencies**:
+
+\`\`\`bash
+npm install @astrojs/mdx @tailwindcss/typography @tailwindcss/vite tailwindcss remark-gfm rehype-slug rehype-autolink-headings
+npm install -D pagefind
+\`\`\`
+
+3. **Copy the template files** from this repository
+
+4. **Update your \`astro.config.mjs\`** (see Configuration)
+
+## Project Structure
+
+After installation, your project will look like this:
+
+\`\`\`
+my-docs/
+├── src/
+│   ├── components/
+│   │   └── DocsSearch.astro
+│   ├── layouts/
+│   │   └── DocsLayout.astro
+│   ├── lib/
+│   │   └── docs-config.ts
+│   ├── pages/docs/
+│   │   ├── introduction.mdx
+│   │   ├── installation.mdx
+│   │   └── ...
+│   └── styles/
+│       └── global.css
+├── astro.config.mjs
+├── package.json
+└── tsconfig.json
+\`\`\`
+
+## Development
+
+Start the development server:
+
+\`\`\`bash
+npm run dev
+\`\`\`
+
+The site will be available at `http://localhost:4321`. Changes you make will hot-reload automatically.
+
+## Building for Production
+
+Build your documentation site:
+
+\`\`\`bash
+npm run build
+\`\`\`
+
+This command will:
+1. Build your Astro site to the `dist/` directory
+2. Generate the Pagefind search index
+
+## Testing the Build
+
+Preview your production build locally:
+
+\`\`\`bash
+npm run preview
+\`\`\`
+
+## Next Steps
+
+Now that you have Astro Docs Minimal installed:
+
+- [Configure](/docs/configuration) your navigation and settings
+- [Customize](/docs/customization) the appearance
+- Start writing documentation!
+
+---
+
+**Troubleshooting:**
+
+If you encounter any issues:
+- Make sure you're using Node.js 18 or higher
+- Try deleting `node_modules` and `package-lock.json`, then run `npm install` again
+- Check the [FAQ](/docs/faq) for common issues

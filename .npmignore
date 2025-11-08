@@ -1,0 +1,47 @@
+# Source files (we want to publish these)
+!src/
+
+# Development files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build artifacts
+dist/
+.astro/
+
+# Tests
+tests/
+*.test.ts
+*.spec.ts
+coverage/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Documentation (keep README.md)
+docs/
+*.md
+!README.md
+
+# Environment
+.env
+.env.*
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Development dependencies
+node_modules/
+
+# Temporary
+*.tmp
+.cache/

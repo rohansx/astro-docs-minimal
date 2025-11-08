@@ -1,0 +1,155 @@
+---
+layout: ../../layouts/DocsLayout.astro
+title: Configuration
+description: Configure navigation and customize your documentation site
+---
+
+export const prerender = true;
+
+# Configuration
+
+Customize your documentation site through the \`docs-config.ts\` file.
+
+## Navigation Setup
+
+The sidebar navigation is configured in \`src/lib/docs-config.ts\`:
+
+\`\`\`typescript
+export const docsConfig: DocsConfig = {
+  title: 'My Docs',
+  description: 'Documentation for my project',
+  navigation: [
+    {
+      section: 'Getting Started',
+      links: [
+        { title: 'Introduction', href: '/docs/introduction' },
+        { title: 'Installation', href: '/docs/installation' },
+      ],
+    },
+    {
+      section: 'Guides',
+      links: [
+        { title: 'Configuration', href: '/docs/configuration' },
+        { title: 'Customization', href: '/docs/customization' },
+      ],
+    },
+  ],
+};
+\`\`\`
+
+## Configuration Options
+
+### Basic Settings
+
+| Option | Type | Description |
+|--------|------|-------------|
+| \`title\` | string | Site title shown in browser tab |
+| \`description\` | string | Site description for SEO |
+| \`logo\` | string (optional) | Path to logo image |
+
+### Navigation Structure
+
+Navigation is organized into sections, each containing multiple links:
+
+\`\`\`typescript
+interface NavSection {
+  section: string;      // Section heading
+  links: NavLink[];     // Array of links
+}
+
+interface NavLink {
+  title: string;        // Link text
+  href: string;         // Link URL
+}
+\`\`\`
+
+### Search Configuration
+
+Customize the search placeholder text:
+
+\`\`\`typescript
+{
+  searchPlaceholder: 'Search docs...',
+}
+\`\`\`
+
+### Color Customization
+
+Override the default yellow accent colors:
+
+\`\`\`typescript
+{
+  colors: {
+    accent: '#3b82f6',        // Primary accent color
+    accentHover: '#2563eb',   // Hover state
+    accentLight: '#dbeafe',   // Light backgrounds
+    accentText: '#1e40af',    // Text on light backgrounds
+  },
+}
+\`\`\`
+
+## Astro Configuration
+
+Your \`astro.config.mjs\` should include:
+
+\`\`\`javascript
+import { defineConfig } from 'astro/config';
+import mdx from '@astrojs/mdx';
+import tailwindcss from '@tailwindcss/vite';
+
+export default defineConfig({
+  output: 'static',
+  integrations: [mdx()],
+  markdown: {
+    remarkPlugins: ['remark-gfm'],
+    rehypePlugins: [
+      'rehype-slug',
+      ['rehype-autolink-headings', { behavior: 'wrap' }]
+    ],
+    shikiConfig: {
+      theme: 'github-dark-dimmed',
+      wrap: true,
+    },
+  },
+  vite: {
+    plugins: [tailwindcss()],
+  }
+});
+\`\`\`
+
+## Adding New Pages
+
+To add a new documentation page:
+
+1. Create an \`.mdx\` file in \`src/pages/docs/\`
+2. Add the frontmatter:
+
+\`\`\`mdx
+---
+layout: ../../layouts/DocsLayout.astro
+title: Your Page Title
+description: Page description
+---
+
+export const prerender = true;
+
+# Your Page Title
+
+Content goes here...
+\`\`\`
+
+3. Add it to the navigation in \`docs-config.ts\`
+
+## Environment Variables
+
+If you need environment variables, create a \`.env\` file:
+
+\`\`\`
+PUBLIC_SITE_URL=https://docs.example.com
+\`\`\`
+
+Variables prefixed with \`PUBLIC_\` are exposed to the client.
+
+---
+
+**Next:** Learn how to [Customize](/docs/customization) the appearance

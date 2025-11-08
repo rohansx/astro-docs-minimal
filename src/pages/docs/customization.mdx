@@ -1,0 +1,187 @@
+---
+layout: ../../layouts/DocsLayout.astro
+title: Customization
+description: Customize the appearance and behavior of your docs
+---
+
+export const prerender = true;
+
+# Customization
+
+Make Astro Docs Minimal your own with custom styling and behavior.
+
+## Styling
+
+### Global Styles
+
+Edit \`src/styles/global.css\` to customize global styles:
+
+\`\`\`css
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@theme {
+  /* Custom fonts */
+  --font-sans: 'Your Font', ui-sans-serif, system-ui, sans-serif;
+  
+  /* Add custom colors */
+  --color-brand: #your-color;
+}
+\`\`\`
+
+### Typography
+
+The documentation uses Tailwind's typography plugin. Customize prose styles in \`DocsLayout.astro\`:
+
+\`\`\`astro
+<div class="prose prose-slate prose-lg
+  prose-headings:text-your-color
+  prose-a:text-your-link-color
+  ...">
+  <slot />
+</div>
+\`\`\`
+
+### Color Themes
+
+Change accent colors in \`docs-config.ts\`:
+
+\`\`\`typescript
+export const docsConfig = {
+  // ... other config
+  colors: {
+    accent: '#10b981',        // green-500
+    accentHover: '#059669',   // green-600
+    accentLight: '#d1fae5',   // green-100
+    accentText: '#064e3b',    // green-900
+  },
+};
+\`\`\`
+
+## Layout Customization
+
+### Sidebar Width
+
+Modify the sidebar width in \`DocsLayout.astro\`:
+
+\`\`\`astro
+<aside class="lg:w-80 flex-shrink-0">  <!-- Changed from lg:w-64 -->
+\`\`\`
+
+### Content Width
+
+Adjust max width in \`DocsLayout.astro\`:
+
+\`\`\`astro
+<div class="max-w-6xl mx-auto">  <!-- Changed from max-w-7xl -->
+\`\`\`
+
+### Fonts
+
+Add custom fonts by updating the Google Fonts link in \`DocsLayout.astro\`:
+
+\`\`\`html
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+\`\`\`
+
+Then update your \`global.css\`:
+
+\`\`\`css
+@theme {
+  --font-sans: 'Roboto', sans-serif;
+}
+\`\`\`
+
+## Search Customization
+
+### Search Placeholder
+
+Change the search placeholder in \`docs-config.ts\`:
+
+\`\`\`typescript
+{
+  searchPlaceholder: 'Find what you need...',
+}
+\`\`\`
+
+### Search Styling
+
+Customize search appearance in \`DocsSearch.astro\`:
+
+\`\`\`css
+:global(.pagefind-ui__search-input) {
+  /* Your custom styles */
+  padding: 1rem;
+  border-radius: 0.75rem;
+}
+\`\`\`
+
+## Code Block Themes
+
+Change syntax highlighting theme in \`astro.config.mjs\`:
+
+\`\`\`javascript
+markdown: {
+  shikiConfig: {
+    theme: 'dracula',  // Or: 'nord', 'monokai', etc.
+    wrap: true,
+  },
+}
+\`\`\`
+
+Available themes: [Shiki Themes](https://github.com/shikijs/shiki/blob/main/docs/themes.md)
+
+## Adding Custom Components
+
+Create reusable components in \`src/components/\`:
+
+\`\`\`astro
+---
+// src/components/Callout.astro
+interface Props {
+  type?: 'info' | 'warning' | 'success';
+}
+const { type = 'info' } = Astro.props;
+---
+
+<div class={\`callout callout-\${type}\`}>
+  <slot />
+</div>
+\`\`\`
+
+Use in your MDX files:
+
+\`\`\`mdx
+import Callout from '../../components/Callout.astro';
+
+<Callout type="warning">
+This is an important note!
+</Callout>
+\`\`\`
+
+## Dark Mode
+
+To add dark mode support:
+
+1. Add dark mode classes to \`DocsLayout.astro\`
+2. Use Tailwind's dark mode utilities
+3. Add a theme toggle component
+
+Example:
+
+\`\`\`astro
+<body class="bg-white dark:bg-slate-900">
+\`\`\`
+
+## Mobile Responsiveness
+
+The template is mobile-responsive by default. Customize breakpoints by modifying Tailwind classes:
+
+- \`sm:\` - 640px and up
+- \`md:\` - 768px and up  
+- \`lg:\` - 1024px and up
+- \`xl:\` - 1280px and up
+
+---
+
+**That's it!** You now have a fully customized documentation site. Happy writing! 📝
