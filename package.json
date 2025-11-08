@@ -1,6 +1,6 @@
 {
   "name": "astro-docs-minimal",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A minimal, beautiful, and blazing-fast documentation system for Astro",
   "type": "module",
   "keywords": [
