@@ -1,5 +1,9 @@
 # 📚 Astro Docs Minimal
 
+[![npm version](https://badge.fury.io/js/astro-docs-minimal.svg)](https://www.npmjs.com/package/astro-docs-minimal)
+[![npm downloads](https://img.shields.io/npm/dm/astro-docs-minimal.svg)](https://www.npmjs.com/package/astro-docs-minimal)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 > A minimal, beautiful, and blazing-fast documentation system for Astro
 
 ## 🎯 Features
