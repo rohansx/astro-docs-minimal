@@ -6,6 +6,18 @@
 
 > A minimal, beautiful, and blazing-fast documentation system for Astro
 
+## 🌟 Live Demo
+
+Check out the live example: **[myclone.is/docs](https://myclone.is/docs)**
+
+<div align="center">
+  <img src="./public/demo/demo1.png" alt="Astro Docs Minimal - Documentation Page" width="100%">
+  <p><em>Clean documentation layout with sidebar navigation</em></p>
+
+  <img src="./public/demo/demo2.png" alt="Astro Docs Minimal - Search Feature" width="100%">
+  <p><em>Built-in search powered by Pagefind</em></p>
+</div>
+
 ## 🎯 Features
 
 - ✨ **Clean Design** - Minimal and professional documentation layout
